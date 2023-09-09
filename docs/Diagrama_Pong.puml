@@ -1,0 +1,36 @@
+@startuml Pong
+
+class Jugador{
+    + Controlar()
+}
+
+class Pelota{
+    + Mover()
+    + Rebotar()
+}
+
+class Paleta{
+    + MoverAbajo()
+    + MoverArriba()
+    + Golpear()
+}
+
+class Puntaje{
+    + Añadir()
+    + Eliminar()
+}
+
+class Campo{
+    + DetectarPelota()
+}
+
+class LineaDivisora{
+}
+
+Campo *-- Paleta
+Campo *-- LineaDivisora
+Jugador o-- Paleta
+Paleta o-- Pelota
+Jugador *-- Puntaje
+
+@enduml

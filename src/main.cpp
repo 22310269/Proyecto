@@ -1,5 +1,10 @@
 #include <iostream>
 #include <Mascota.hpp>
+#include <Jugador.hpp>
+#include <Campo.hpp>
+#include <Paleta.hpp>
+#include <Pelota.hpp>
+#include <Puntaje.hpp>
 
 int main(int argc, char const *argv[])
 {
