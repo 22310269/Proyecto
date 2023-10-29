@@ -1,23 +1,50 @@
-#include <iostream>
-#include <Mascota.hpp>
-#include <Jugador.hpp>
-#include <Campo.hpp>
-#include <Paleta.hpp>
-#include <Pelota.hpp>
-#include <Puntaje.hpp>
+#include <Ventana.hpp>
+#include <Dibujo.hpp>
+#include <Actualizable.hpp>
+#include <Controlador.hpp>
+#include <Escenario.hpp>
+#include <curses.h>
+#include <unistd.h>
+#include <list>
+
+using namespace std;
 
 int main(int argc, char const *argv[])
 {
-    std::cout << "Juego de mascotas" << std::endl;
+    Ventana ventanaMenu;
+    Ventana ventanaJuego;
+    bool ejecucionJuego = true;
 
-    Mascota m1("Firulais");
-    m1.Jugar();
-    m1.Jugar();
-    m1.Jugar();
+    Dibujo *logo = new Dibujo(68, 5, "paddle_logo");
+    Dibujo *letras = new Dibujo(60, 20, "pong_letras");
+    Dibujo *paletaJ1 = new Dibujo(6, 1, "paddle");
+    Dibujo *paletaJ2 = new Dibujo(167, 1, "paddle");
+    Dibujo *pelota = new Dibujo(80, 45, "pelota");
 
-    std::cout << m1.DecirNombre() << " tiene " << m1.DecirHambre() << " de hambre." << std::endl;
+    list<Dibujo *> dibujosJuego;
+    dibujosJuego.push_back(paletaJ1);
+    dibujosJuego.push_back(paletaJ2);
+    dibujosJuego.push_back(pelota);
 
-    m1.Comer(5);
+    list<Dibujo *> dibujosMenu;
+    dibujosMenu.push_back(logo);
+    dibujosMenu.push_back(letras);
+
+    list<Actualizable *> actualizables;
+    Controlador *control = new Controlador(paletaJ1, paletaJ2, ejecucionJuego);
+    actualizables.push_back(control);
+
+    Escenario escenario(pelota, paletaJ1, paletaJ2);
+
+    ventanaMenu.Dibujar(dibujosMenu);
+    timeout(3000);
+
+    while (ejecucionJuego)
+    {
+        ventanaJuego.Actualizar(actualizables);
+       escenario.GestionarMovimientoPelota();
+        ventanaJuego.Dibujar(dibujosJuego);
+    }
 
     return 0;
 }

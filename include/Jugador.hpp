@@ -1,8 +1,18 @@
-class Jugador
+#pragma once
+
+class Personaje
 {
 private:
+    
 public:
-    void Controlar()
-    {
-    }
+    Personaje(/* args */);
+    ~Personaje();
 };
+
+Personaje::Personaje(/* args */)
+{
+}
+
+Personaje::~Personaje()
+{
+}

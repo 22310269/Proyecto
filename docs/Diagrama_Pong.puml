@@ -1,36 +1,61 @@
-@startuml Pong
+@startuml PongGame
 
-class Jugador{
-    + Controlar()
+class Ventana {
+  + Actualizar(actualizables: List<Actualizable*>)
+  + Dibujar(dibujos: List<Dibujo*>)
+  + Cerrar()
 }
 
-class Pelota{
-    + Mover()
-    + Rebotar()
+class Dibujo {
+  - x: int
+  - y: int
+  - archivo: fstream
+  - recurso: string
+  + Dibujo(x: int, y: int, recurso: string)
+  + Mover(x: int, y: int)
+  + SubirY(y: int)
+  + BajarY(y: int)
+  + Dibujar()
+  + Limpiar()
 }
 
-class Paleta{
-    + MoverAbajo()
-    + MoverArriba()
-    + Golpear()
+class Actualizable {
+  + Actualizar()
 }
 
-class Puntaje{
-    + Añadir()
-    + Eliminar()
+class Controlador {
+  - paletaJ1: Dibujo
+  - paletaJ2: Dibujo
+  - ejecucion: bool&
+  + Controlador(jugador1: Dibujo, jugador2: Dibujo, ejec: bool&)
+  + Actualizar()
 }
 
-class Campo{
-    + DetectarPelota()
+class Escenario {
+  - pelota: Dibujo
+  - paletaJ1: Dibujo
+  - paletaJ2: Dibujo
+  - velocidadPelotaX: int
+  - velocidadPelotaY: int
+  + Escenario(pelota: Dibujo, paletaJ1: Dibujo, paletaJ2: Dibujo)
+  + GestionarMovimientoPelota()
 }
 
-class LineaDivisora{
+class Juego 
+class Personaje 
+class Marco {
+  + Dibujar()
 }
+class Puntuacion
 
-Campo *-- Paleta
-Campo *-- LineaDivisora
-Jugador o-- Paleta
-Paleta o-- Pelota
-Jugador *-- Puntaje
+Ventana "1" --o "0..*" Actualizable
+
+Dibujo "*" --o "1" Actualizable 
+
+Controlador -- Dibujo 
+Escenario -- Dibujo 
+Juego -- Personaje 
+Marco -- Dibujo 
+Puntuacion -- Dibujo 
 
 @enduml
