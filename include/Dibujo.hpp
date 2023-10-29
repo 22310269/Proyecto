@@ -77,7 +77,7 @@ public:
     {
         int yPelota = ObtenerY();
 
-        int posicionParedSuperior = 0; 
+        int posicionParedSuperior = 0;
 
         return yPelota < posicionParedSuperior;
     }

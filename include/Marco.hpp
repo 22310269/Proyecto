@@ -6,7 +6,7 @@ class Marco : public Dibujo
 {
 private:
 public:
-    Marco(){}
+    Marco() {}
     ~Marco();
     void Dibujar()
     {

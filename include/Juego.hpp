@@ -3,7 +3,6 @@
 class Juego
 {
 private:
-
 public:
     Juego()
     {

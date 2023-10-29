@@ -17,8 +17,8 @@ public:
     Escenario(Dibujo *pelota, Dibujo *paletaJ1, Dibujo *paletaJ2)
         : pelota(pelota), paletaJ1(paletaJ1), paletaJ2(paletaJ2)
     {
-        velocidadPelotaX = 1; 
-        velocidadPelotaY = 1; 
+        velocidadPelotaX = 1;
+        velocidadPelotaY = 1;
     }
 
     void GestionarMovimientoPelota()
@@ -27,12 +27,12 @@ public:
 
         if (pelota->ColisionaConPaleta(paletaJ1) || pelota->ColisionaConPaleta(paletaJ2))
         {
-            velocidadPelotaX *= -1; 
+            velocidadPelotaX *= -1;
         }
 
         if (pelota->ColisionaConParedSuperior() || pelota->ColisionaConParedInferior())
         {
-            velocidadPelotaY *= -1; 
+            velocidadPelotaY *= -1;
         }
 
         if (pelota->FueraDePantalla())

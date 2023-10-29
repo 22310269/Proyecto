@@ -34,25 +34,24 @@ public:
         keypad(stdscr, TRUE);
     }
 
-    void Actualizar(list<Actualizable*> actualizables)
+    void Actualizar(list<Actualizable *> actualizables)
     {
-        for (auto &&actualizable : actualizables)   
+        for (auto &&actualizable : actualizables)
         {
             actualizable->Actualizar();
         }
-        
     }
 
-    void Dibujar(list<Dibujo*> dibujos)
-    {   
+    void Dibujar(list<Dibujo *> dibujos)
+    {
         clear();
-        
+
         for (auto &&dibujo : dibujos)
         {
             dibujo->Dibujar();
         }
         refresh();
-        usleep(41000); 
+        usleep(41000);
     }
 
     void Cerrar()

@@ -42,7 +42,7 @@ int main(int argc, char const *argv[])
     while (ejecucionJuego)
     {
         ventanaJuego.Actualizar(actualizables);
-       escenario.GestionarMovimientoPelota();
+        escenario.GestionarMovimientoPelota();
         ventanaJuego.Dibujar(dibujosJuego);
     }
 

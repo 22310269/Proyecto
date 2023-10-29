@@ -3,7 +3,6 @@
 class Personaje
 {
 private:
-    
 public:
     Personaje(/* args */);
     ~Personaje();
